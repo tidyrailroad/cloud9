@@ -1,7 +1,7 @@
 FROM fedora:23
 RUN \
     dnf update --assumeyes && \
-    dnf install --assumeyes git make python tar which bzip2 ncurses gmp-devel mpfr-devel libmpc-devel glibc-devel flex bison glibc-static zlib-devel gcc gcc-c++ && \
+    dnf install --assumeyes git make python tar which bzip2 ncurses gmp-devel mpfr-devel libmpc-devel glibc-devel flex bison glibc-static zlib-devel gcc gcc-c++ nodejs && \
     mkdir /opt/c9sdk && \
     chmod 0555 /opt/c9sdk && \
     git -C /opt/c9sdk init && \
