@@ -12,4 +12,5 @@ RUN \
     dnf update --assumeyes && \
     dnf clean all
 EXPOSE 8080
-CMD node /opt/c9sdk/server.js --listen 0.0.0.0 -p 8080 --auth user:password -w /root
+ENTRYPOINT node /opt/c9sdk/server.js
+CMD --listen 0.0.0.0 -p 8080 --auth user:password -w /root
