@@ -15,9 +15,8 @@ RUN \
     apk add make && \
     apk add gcc && \
     apk add python && \
-#    apk add ca-certificates && \
+    apk add ca-certificates && \
 #    apk add nodejs && \
-#    apk add gcc && \
     /opt/c9sdk/scripts/install-sdk.sh && \
 #    curl -L https://raw.githubusercontent.com/c9/install/master/install.sh | bash && \
 ENTRYPOINT ["node", "/opt/c9sdk/server.js"]
