@@ -11,6 +11,7 @@ RUN \
     curl -L https://raw.githubusercontent.com/c9/install/master/install.sh | bash && \
     dnf update --assumeyes && \
     dnf clean all
+VOLUME /opt/c9sdk
 EXPOSE 8080
 ENTRYPOINT ["node", "/opt/c9sdk/server.js"]
 CMD ["--listen", "0.0.0.0", "-p", "8080", "--auth", "user:password", "-w", "/root"]
