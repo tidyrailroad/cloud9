@@ -13,7 +13,7 @@ RUN \
     apk add wget && \
     apk add make && \
     apk add gcc && \
-    apk add python && \
+    apk add python
 #    /opt/c9sdk/scripts/install-sdk.sh
 ENTRYPOINT ["node", "/opt/c9sdk/server.js"]
 CMD ["--listen", "0.0.0.0", "-p", "8080", "--auth", "user:password", "-w", "/root"]
