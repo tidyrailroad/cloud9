@@ -9,7 +9,7 @@ RUN \
     git -C /opt/c9sdk remote add origin git://github.com/c9/core.git && \
     git -C /opt/c9sdk pull origin master && \
     apk add bash && \
-#    apk add wget && \
+    apk add wget && \
 #    apk add ca-certificates && \
 #    apk add nodejs && \
 #    apk add make && \
