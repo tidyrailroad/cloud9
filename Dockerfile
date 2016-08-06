@@ -1,7 +1,7 @@
 FROM alpine:3.4
 RUN \
     apk update && \
-    apk upgrate && \
+    apk upgrade && \
     apk add git && \
     mkdir /opt && \
     mkdir /opt/c9sdk && \
