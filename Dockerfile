@@ -12,6 +12,7 @@ RUN \
     apk add wget && \
     apk add make && \
     apk add gcc && \
+    apk add python && \
 #    apk add ca-certificates && \
 #    apk add nodejs && \
 #    apk add gcc && \
