@@ -7,7 +7,6 @@ RUN \
     mkdir /opt/c9sdk && \
     git -C /opt/c9sdk init && \
     git -C /opt/c9sdk remote add origin git://github.com/c9/core.git && \
-    apk add openssh && \
     git -C /opt/c9sdk fetch origin master && \
     git -C /opt/c9sdk checkout master && \
     apk add bash && \
@@ -15,7 +14,7 @@ RUN \
     apk add make && \
     apk add gcc && \
     apk add python && \
-    apk add ca-certificates && \
+#    apk add ca-certificates && \
 #    apk add nodejs && \
     /opt/c9sdk/scripts/install-sdk.sh && \
 #    curl -L https://raw.githubusercontent.com/c9/install/master/install.sh | bash && \
