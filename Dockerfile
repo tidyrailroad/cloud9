@@ -7,6 +7,7 @@ RUN \
     mkdir /opt/c9sdk && \
     git -C /opt/c9sdk init && \
     git -C /opt/c9sdk remote add origin git@github.com:desertedscorpion/install.git && \
+    apk add openssh && \
     git -C /opt/c9sdk pull origin scratch/125CE43B-B0CD-4A78-95D1-5064F2609E96 && \
     apk add bash && \
     apk add wget && \
