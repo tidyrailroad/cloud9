@@ -31,4 +31,4 @@ ENTRYPOINT \
     git -C /root/workspace/${PROJECT_NAME} remote add origin ${PROJECT_ORIGIN} && \
     node /opt/c9sdk/server.js --listen 127.0.0.1 -p 8080 -w /root/workspace/${PROJECT_NAME} && \
     true
-
+EXPOSE 8080
