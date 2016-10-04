@@ -29,6 +29,6 @@ ENTRYPOINT \
     git -C /root/workspace/${PROJECT_NAME} remote add upstream ${PROJECT_UPSTREAM} && \
     git -C /root/workspace/${PROJECT_NAME} remote set-url --push upstream no_push && \
     git -C /root/workspace/${PROJECT_NAME} remote add origin ${PROJECT_ORIGIN} && \
-    node /opt/cdsdk/server.js --listen 127.0.0.1 -p 8080 -w /root/workspace/${PROJECT_NAME} && \
+    node /opt/c9sdk/server.js --listen 127.0.0.1 -p 8080 -w /root/workspace/${PROJECT_NAME} && \
     true
 
