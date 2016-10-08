@@ -1,5 +1,5 @@
 FROM fedora:23
-COPY docker.repo bash-completion.sh /opt/cloud9/
+COPY docker.repo /etc/yum.repos.d/
 RUN \
     dnf update --assumeyes && \
     dnf install --assumeyes git make python tar which bzip2 ncurses gmp-devel mpfr-devel libmpc-devel glibc-devel flex bison glibc-static zlib-devel gcc gcc-c++ nodejs && \
@@ -10,20 +10,17 @@ RUN \
     git -C /opt/c9sdk pull origin master && \
     /opt/c9sdk/scripts/install-sdk.sh && \
     curl -L https://raw.githubusercontent.com/c9/install/master/install.sh | bash && \
-    cp /opt/cloud9/docker.repo /etc/yum.repos.d/ && \
     dnf install --assumeyes docker-engine && \
-    echo source /opt/cloud9/bash-completion.sh >> /root/.bash_profile && \
-    dnf install --assumeyes git-core && \
     dnf update --assumeyes && \
     dnf clean all && \
     true
 ENTRYPOINT \
     mkdir /root/bin && \
     git -C /root/bin init && \
-    git -C /root/bin remote add upstream ${BIN_URL} && \
+    git -C /root/bin remote add upstream ${BIN} && \
     git -C /root/bin remote set-url --push upstream no_push && \
     git -C /root/bin fetch upstream master && \
-    git -C /root/bin checkout upstream/tags/${BIN_TAG} && \
+    git -C /root/bin checkout upstream/master && \
     mkdir /root/workspace && \
     PROJECT_NAME_1=${PROJECT_UPSTREAM%.*} && \
     PROJECT_NAME=${PROJECT_NAME_1##*/} && \
@@ -32,6 +29,8 @@ ENTRYPOINT \
     git -C /root/workspace/${PROJECT_NAME} remote add upstream ${PROJECT_UPSTREAM} && \
     git -C /root/workspace/${PROJECT_NAME} remote set-url --push upstream no_push && \
     git -C /root/workspace/${PROJECT_NAME} remote add origin ${PROJECT_ORIGIN} && \
+    git -C /root/workspace/${PROJECT_NAME} config user.email "${GIT_EMAIL}" && \
+    git -C /root/workspace/${PROJECT_NAME} config user.name "${GIT_NAME}" && \
     node /opt/c9sdk/server.js --listen 0.0.0.0 --auth user:password -p 8080 -w /root/workspace/${PROJECT_NAME} && \
     true
 EXPOSE 8080
