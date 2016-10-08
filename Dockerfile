@@ -1,5 +1,5 @@
 FROM fedora:23
-COPY docker.repo /etc/yum.repos.d/
+COPY docker.repo bash-completion.sh /opt/cloud9/
 RUN \
     dnf update --assumeyes && \
     dnf install --assumeyes git make python tar which bzip2 ncurses gmp-devel mpfr-devel libmpc-devel glibc-devel flex bison glibc-static zlib-devel gcc gcc-c++ nodejs && \
@@ -10,7 +10,10 @@ RUN \
     git -C /opt/c9sdk pull origin master && \
     /opt/c9sdk/scripts/install-sdk.sh && \
     curl -L https://raw.githubusercontent.com/c9/install/master/install.sh | bash && \
+    cp /opt/cloud9/docker.repo /etc/yum.repos.d/ && \
     dnf install --assumeyes docker-engine && \
+    echo source /opt/cloud9/bash-completion.sh >> /root/.bash_profile && \
+    dnf install --assumeyes git-core && \
     dnf update --assumeyes && \
     dnf clean all && \
     true
