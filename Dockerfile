@@ -13,7 +13,7 @@ RUN \
     cp /opt/cloud9/docker.repo /etc/yum.repos.d/ && \
     dnf install --assumeyes docker-engine && \
     echo source /opt/cloud9/bash-completion.sh >> /root/.bash_profile && \
-    dnf install --assumeyes git-core && \
+    dnf install --assumeyes git-core meld && \
     dnf update --assumeyes && \
     dnf clean all && \
     true
