@@ -29,6 +29,8 @@ ENTRYPOINT \
     git -C /root/workspace/${PROJECT_NAME} remote add upstream ${PROJECT_UPSTREAM} && \
     git -C /root/workspace/${PROJECT_NAME} remote set-url --push upstream no_push && \
     git -C /root/workspace/${PROJECT_NAME} remote add origin ${PROJECT_ORIGIN} && \
+    git -C /root/workspace config user.email "${GIT_EMAIL}" && \
+    git -C /root/workspace config user.name "${GIT_NAME}" && \
     node /opt/c9sdk/server.js --listen 0.0.0.0 --auth user:password -p 8080 -w /root/workspace/${PROJECT_NAME} && \
     true
 EXPOSE 8080
