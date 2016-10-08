@@ -1,5 +1,5 @@
 FROM fedora:23
-COPY docker.repo bash-completion.sh /opt/cloud9/
+COPY docker.repo bash-completion.sh post-commit.sh /opt/cloud9/
 RUN \
     dnf update --assumeyes && \
     dnf install --assumeyes git make python tar which bzip2 ncurses gmp-devel mpfr-devel libmpc-devel glibc-devel flex bison glibc-static zlib-devel gcc gcc-c++ nodejs && \
@@ -32,6 +32,8 @@ ENTRYPOINT \
     git -C /root/workspace/${PROJECT_NAME} remote add upstream ${PROJECT_UPSTREAM} && \
     git -C /root/workspace/${PROJECT_NAME} remote set-url --push upstream no_push && \
     git -C /root/workspace/${PROJECT_NAME} remote add origin ${PROJECT_ORIGIN} && \
+    cp /opt/cloud9/post-commit.sh /root/workspace/${PROJECT_NAME}/.git/hooks && \
+    chmod 0500 /root/workspace/${PROJECT_NAME}/.git/hooks && \
     node /opt/c9sdk/server.js --listen 0.0.0.0 --auth user:password -p 8080 -w /root/workspace/${PROJECT_NAME} && \
     true
 EXPOSE 8080
