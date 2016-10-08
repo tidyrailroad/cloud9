@@ -1,5 +1,5 @@
 FROM fedora:23
-COPY docker.repo /etc/yum.repos.d/
+COPY docker.repo post-commit.sh /opt/cloud9
 RUN \
     dnf update --assumeyes && \
     dnf install --assumeyes git make python tar which bzip2 ncurses gmp-devel mpfr-devel libmpc-devel glibc-devel flex bison glibc-static zlib-devel gcc gcc-c++ nodejs && \
@@ -10,6 +10,8 @@ RUN \
     git -C /opt/c9sdk pull origin master && \
     /opt/c9sdk/scripts/install-sdk.sh && \
     curl -L https://raw.githubusercontent.com/c9/install/master/install.sh | bash && \
+    cp /opt/cloud9/docker.repo /etc/yum.repos.d && \
+    dnf update --assumeyes && \
     dnf install --assumeyes docker-engine && \
     dnf update --assumeyes && \
     dnf clean all && \
@@ -31,6 +33,8 @@ ENTRYPOINT \
     git -C /root/workspace/${PROJECT_NAME} remote add origin ${PROJECT_ORIGIN} && \
     git -C /root/workspace config user.email "${GIT_EMAIL}" && \
     git -C /root/workspace config user.name "${GIT_NAME}" && \
+    cp /opt/cloud9/post-commit.sh /root/rootspace/${PROJECT_NAME}/.git/hooks/post-commit && \
+    chmod 0500 /root/workspace/${PROJECT_NAME}/.git/hooks/post-commit && \
     node /opt/c9sdk/server.js --listen 0.0.0.0 --auth user:password -p 8080 -w /root/workspace/${PROJECT_NAME} && \
     true
 EXPOSE 8080
