@@ -34,8 +34,8 @@ ENTRYPOINT \
     git -C /root/workspace/${PROJECT_NAME} remote add origin ${PROJECT_ORIGIN} && \
     git -C /root/workspace/${PROJECT_NAME} config user.email "${GIT_EMAIL}" && \
     git -C /root/workspace/${PROJECT_NAME} config user.name "${GIT_NAME}" && \
-    cp /opt/cloud9/post-commit.sh /root/workspace/${PROJECT_NAME}/.git/hooks && \
-    chmod 0500 /root/workspace/${PROJECT_NAME}/.git/hooks && \
+    cp /opt/cloud9/post-commit.sh /root/workspace/${PROJECT_NAME}/.git/hooks/post-commit && \
+    chmod 0500 /root/workspace/${PROJECT_NAME}/.git/hooks/post-commit && \
     node /opt/c9sdk/server.js --listen 0.0.0.0 --auth user:password -p 8080 -w /root/workspace/${PROJECT_NAME} && \
     true
 EXPOSE 8080
