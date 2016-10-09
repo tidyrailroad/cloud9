@@ -22,8 +22,8 @@ ENTRYPOINT \
     git -C /root/bin init && \
     git -C /root/bin remote add upstream ${BIN_URL} && \
     git -C /root/bin remote set-url --push upstream no_push && \
-    git -C /root/bin fetch upstream master && \
-    git -C /root/bin checkout upstream/tags/${BIN_TAG} && \
+    git -C /root/bin fetch --tags upstream tags/${BIG_TAG} && \
+    git -C /root/bin checkout tags/${BIN_TAG} && \
     mkdir /root/workspace && \
     PROJECT_NAME_1=${PROJECT_UPSTREAM%.*} && \
     PROJECT_NAME=${PROJECT_NAME_1##*/} && \
