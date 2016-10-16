@@ -17,6 +17,7 @@ RUN \
     dnf update --assumeyes && \
     dnf clean all && \
     true
+VOLUME /root/workspace
 ENTRYPOINT \
     mkdir /root/bin && \
     git -C /root/bin init && \
@@ -24,7 +25,6 @@ ENTRYPOINT \
     git -C /root/bin remote set-url --push upstream no_push && \
     git -C /root/bin fetch --tags upstream tags/${BIN_TAG} && \
     git -C /root/bin checkout tags/${BIN_TAG} && \
-    mkdir /root/workspace && \
     PROJECT_NAME_1=${PROJECT_UPSTREAM%.*} && \
     PROJECT_NAME=${PROJECT_NAME_1##*/} && \
     mkdir /root/workspace/${PROJECT_NAME} && \
