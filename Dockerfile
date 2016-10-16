@@ -42,7 +42,7 @@ ENTRYPOINT \
             true \
         ) || \
         true \
-    ) \
+    ) && \
     cp /opt/cloud9/post-commit.sh /root/workspace/${PROJECT_NAME}/.git/hooks/post-commit && \
     chmod 0500 /root/workspace/${PROJECT_NAME}/.git/hooks/post-commit && \
     node /opt/c9sdk/server.js --listen 0.0.0.0 --auth user:password -p 8080 -w /root/workspace/${PROJECT_NAME} && \
