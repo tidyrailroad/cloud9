@@ -30,7 +30,7 @@ ENTRYPOINT \
     PROJECT_NAME=${PROJECT_NAME_1##*/} && \
     mkdir /root/workspace/${PROJECT_NAME} && \
     cd /root/workspace/${PROJECT_NAME} && \
-    git flux project start ${PROJECT_UPSTREAM} ${PROJECT_ORIGIN} "${GIT_EMAIL}" "${GIT_NAME}"
+    git flux project start ${PROJECT_UPSTREAM} ${PROJECT_ORIGIN} "${GIT_EMAIL}" "${GIT_NAME}" && \
     node /opt/c9sdk/server.js --listen 0.0.0.0 --auth user:password -p 8080 -w /root/workspace/${PROJECT_NAME} && \
     true
 EXPOSE 8080
