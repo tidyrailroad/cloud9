@@ -1,5 +1,5 @@
 FROM fedora:23
-COPY docker.repo bash-completion.sh post-commit.sh /opt/cloud9/
+COPY docker.repo bash-completion.sh /opt/cloud9/
 RUN \
     dnf update --assumeyes && \
     dnf install --assumeyes git make python tar which bzip2 ncurses gmp-devel mpfr-devel libmpc-devel glibc-devel flex bison glibc-static zlib-devel gcc gcc-c++ nodejs && \
@@ -29,22 +29,8 @@ ENTRYPOINT \
     PROJECT_NAME_1=${PROJECT_UPSTREAM%.*} && \
     PROJECT_NAME=${PROJECT_NAME_1##*/} && \
     mkdir /root/workspace/${PROJECT_NAME} && \
-    git -C /root/workspace/${PROJECT_NAME} init && \
-    git -C /root/workspace/${PROJECT_NAME} remote add upstream ${PROJECT_UPSTREAM} && \
-    git -C /root/workspace/${PROJECT_NAME} remote set-url --push upstream no_push && \
-    git -C /root/workspace/${PROJECT_NAME} remote add origin ${PROJECT_ORIGIN} && \
-    git -C /root/workspace/${PROJECT_NAME} config user.email "${GIT_EMAIL}" && \
-    git -C /root/workspace/${PROJECT_NAME} config user.name "${GIT_NAME}" && \
-    ( \
-        ( \
-            git -C /root/workspace/${PROJECT_NAME} fetch upstream develop && \
-                git -C /root/workspace/${PROJECT_NAME} checkout upstream/develop && \
-            true \
-        ) || \
-        true \
-    ) && \
-    cp /opt/cloud9/post-commit.sh /root/workspace/${PROJECT_NAME}/.git/hooks/post-commit && \
-    chmod 0500 /root/workspace/${PROJECT_NAME}/.git/hooks/post-commit && \
+    cd /root/workspace/${PROJECT_NAME} && \
+    git flux project start ${PROJECT_UPSTREAM} ${PROJECT_ORIGIN} "${GIT_EMAIL}" "${GIT_NAME}"
     node /opt/c9sdk/server.js --listen 0.0.0.0 --auth user:password -p 8080 -w /root/workspace/${PROJECT_NAME} && \
     true
 EXPOSE 8080
