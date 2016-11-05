@@ -10,7 +10,6 @@ dnf update --assumeyes &&
     curl -L https://raw.githubusercontent.com/c9/install/master/install.sh | bash &&
     cp /opt/cloud9/docker.repo /etc/yum.repos.d/ &&
     dnf install --assumeyes docker-engine &&
-    echo "docker run --interactive --tty --rm alpine:3.4 sh" >> /root/.bash_profile &&
     dnf update --assumeyes &&
     dnf clean all &&
     true
