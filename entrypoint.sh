@@ -1,5 +1,4 @@
-FROM fedora:24
-COPY ["docker.repo", "install.sh", "entrypoint.sh" "/opt/cloud9/"]
-RUN ["/usr/bin/sh", "/opt/cloud9/install.sh"]
-ENTRYPOINT ["/usr/bin/sh", "/opt/cloud9/entrypoint.sh"]
-EXPOSE 8080
+#!/bin/sh
+
+node /opt/cloud9/c9sdk/server.js --listen 0.0.0.0 --auth user:password -p 8080 -w /root &&
+    true
