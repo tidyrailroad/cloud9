@@ -16,6 +16,9 @@ COMMIT_ID=$(git rev-parse HEAD) &&
     alpine:3.4 sh &&
     docker \
     run \
+    --interactive \
+    --tty \
+    --detach \
     --env PROJECT_NAME=dot_ssh \
     --env PROJECT_COMMAND="docker exec --interactive --tty $(docker ps -q --latest) sh -c \"cd /usr/local/src && exec /bin/sh\"" \
     --privileged \
