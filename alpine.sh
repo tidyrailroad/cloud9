@@ -27,4 +27,5 @@ COMMIT_ID=$(git rev-parse HEAD) &&
     --publish-all \
     emorymerryman/cloud9:${COMMIT_ID} &&
     docker ps --latest &&
+    echo ${COMMIT_ID} &&
     true
