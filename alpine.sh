@@ -9,7 +9,7 @@ docker build --tag emorymerryman/cloud9:$(git rev-parse HEAD) . &&
     --detach \
     --privileged \
     --net host \
-    --export DISPLAY \
+    --env DISPLAY \
     --volume /tmp/.X11 \
     --volume dot_ssh:/usr/local/src \
     alpine:3.4 sh &&
