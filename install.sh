@@ -10,7 +10,8 @@ dnf update --assumeyes &&
     curl -L https://raw.githubusercontent.com/c9/install/master/install.sh | bash &&
     cp /opt/cloud9/docker.repo /etc/yum.repos.d/ &&
     dnf install --assumeyes docker-engine &&
-    echo ${HOME}/bin/shell.sh >> /etc/shells &&s
+    dnf install --assumeyes util-linux-user &&
+    echo ${HOME}/bin/shell.sh >> /etc/shells &&
     dnf update --assumeyes &&
     dnf clean all &&
     true
