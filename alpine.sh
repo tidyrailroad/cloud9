@@ -23,7 +23,6 @@ COMMIT_ID=$(git rev-parse HEAD) &&
     --net host \
     --env DISPLAY \
     --volume /tmp/.X11 \
-    --volume dot_ssh:/usr/local/src \
     alpine:3.4 sh &&
     # !!!!!
     # CLOUD9
