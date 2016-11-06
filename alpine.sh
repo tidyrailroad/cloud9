@@ -15,7 +15,7 @@ COMMIT_ID=$(git rev-parse HEAD) &&
     # and can run x11 gui apps
     docker \
     run \
-    --restart always
+    --restart always \
     --interactive \
     --tty \
     --detach \
