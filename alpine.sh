@@ -24,6 +24,7 @@ COMMIT_ID=$(git rev-parse HEAD) &&
     --privileged \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume dot_ssh:/workspace \
+    --publish-all \
     emorymerryman/cloud9:${COMMIT_ID} &&
     docker ps --latest &&
     true
