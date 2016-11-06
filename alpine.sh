@@ -26,19 +26,19 @@ COMMIT_ID=$(git rev-parse HEAD) &&
     # !!!!!
     # CLOUD9
     # !!!!!
+    # The terminal should go to the previously created alpine instance (instance of the fedora based cloud9 instance)
+    # It should be as if you are on alpine.  (fedora should be invisible to the user)
+    #
+    # privileged and /var/run/docker.sock is necessary b/c to use docker
+    #
     docker \
     run \
     --interactive \
     --tty \
     --detach \
-    # when you go to cloud9 in the browser, you should see alpine in the title bar, etc.
     --env PROJECT_NAME=alpine \
-    # The terminal should go to the previously created alpine instance (instance of the fedora based cloud9 instance)
-    # It should be as if you are on alpine.  (fedora should be invisible to the user)
     --env PROJECT_COMMAND="docker exec --interactive --tty $(docker ps -q --latest) sh -c \"cd /usr/local/src && sh\"" \
-    # this is necessary b/c to use docker
     --privileged \
-    # necessary to use docker
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --publish-all \
     emorymerryman/cloud9:${COMMIT_ID} &&
