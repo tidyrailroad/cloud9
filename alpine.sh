@@ -20,7 +20,7 @@ COMMIT_ID=$(git rev-parse HEAD) &&
     --tty \
     --detach \
     --env PROJECT_NAME=dot_ssh \
-    --env PROJECT_COMMAND="docker exec --interactive --tty $(docker ps -q --latest) sh" \
+    --env PROJECT_COMMAND="docker exec --interactive --tty $(docker ps -q --latest) sh -c \"cd /usr/local/src && sh\"" \
     --privileged \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume dot_ssh:/workspace \
