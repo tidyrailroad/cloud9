@@ -1,4 +1,4 @@
-#!/bin/sh
+git #!/bin/sh
 
 COMMIT_ID=$(git rev-parse HEAD) &&
     # build the image
@@ -40,7 +40,6 @@ COMMIT_ID=$(git rev-parse HEAD) &&
     --detach \
     --env PROJECT_NAME=alpine \
     --env PROJECT_COMMAND="docker exec --interactive --tty $(docker ps -q --latest) sh -c \"cd /usr/local/src && sh\"" \
-    --volume dot_ssh:/workspace \
     --privileged \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --publish-all \
