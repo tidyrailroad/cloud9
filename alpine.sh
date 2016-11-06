@@ -1,6 +1,7 @@
 #!/bin/sh
 
-docker build --tag emorymerryman/cloud9:$(git rev-parse HEAD) . &&
+COMMIT_ID=$(git rev-parse HEAD) &&
+    docker build --tag emorymerryman/cloud9:${COMMIT_ID} . &&
     docker \
     run \
     --restart always \
@@ -20,5 +21,5 @@ docker build --tag emorymerryman/cloud9:$(git rev-parse HEAD) . &&
     --privileged \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume dot_ssh:/workspace \
-    emorymerryman/cloud9:$(git rev-parse HEAD) &&
+    emorymerryman/cloud9:${COMMIT_ID} &&
     true
