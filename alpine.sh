@@ -1,4 +1,4 @@
-git #!/bin/sh
+#!/bin/sh
 
 COMMIT_ID=$(git rev-parse HEAD) &&
     # build the image
