@@ -1,7 +1,6 @@
 #!/bin/sh
 
-ln --symbolic --force /workspace /usr/local/src/${PROJECT_NAME} &&
-    mkdir ${HOME}/bin &&
+mkdir ${HOME}/bin &&
     echo -en "#!/bin/sh\n\n${PROJECT_COMMAND}" >> ${HOME}/bin/shell.sh &&
     chmod 0500 ${HOME}/bin/shell.sh &&
     chsh -s ${HOME}/bin/shell.sh root &&
