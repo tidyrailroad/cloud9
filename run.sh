@@ -9,7 +9,7 @@ apk add tar &&
 apk add which &&
 apk add bzip2 &&
 apk add ncurses &&
-apk add gmp-devel &&
+apk add gmp-dev &&
 apk add mpfr-dev &&
 apk add libmpc-devel &&
 apk add glibc-devel &&
