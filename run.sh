@@ -19,7 +19,7 @@ apk add bison &&
 apk add zlib-dev &&
 apk add gcc &&
 apk add g++ &&
-apk add nodejs &&
+# apk add nodejs &&
 apk add bash &&
 apk add curl &&
 apk add ca-certificates &&
