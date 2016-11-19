@@ -1,10 +1,10 @@
 #!/bin/sh
 
 (
-    [ -d /init ] &&
+    [ ! -d /init ] ||
     ls -1 /etc/init.d | while read SCRIPT
     do
-	[ -f /init/${SCRIPT} ] && ( /init/${SCRIPT} || exit 64 ) &&
+	[ -f /init/${SCRIPT} ] && ( /bin/sh /init/${SCRIPT} || exit 64 ) &&
 	true
     done &&
 ) &&
