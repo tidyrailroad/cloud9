@@ -18,7 +18,7 @@ apk add bison &&
 # apk add glibc-static &&
 apk add zlib-dev &&
 apk add gcc &&
-apk add gcc-c++ &&
+apk add g++ &&
 apk add nodejs &&
 mkdir /opt/cloud9/c9sdk &&
 git -C /opt/cloud9/c9sdk init &&
