@@ -2,7 +2,7 @@
 
 (
     [ ! -d /init ] ||
-    ls -1 /etc/init.d | while read SCRIPT
+    ls -1 /init | while read SCRIPT
     do
 	[ -f /init/${SCRIPT} ] && ( /bin/sh /init/${SCRIPT} || exit 64 ) &&
 	true
