@@ -26,11 +26,21 @@ apk add ca-certificates &&
 update-ca-certificates &&
 apk add openssl &&
 apk add wget &&
+apk add nodejs &&
 mkdir /opt/cloud9/c9sdk &&
 git -C /opt/cloud9/c9sdk init &&
 git -C /opt/cloud9/c9sdk remote add origin git://github.com/c9/core.git &&
 git -C /opt/cloud9/c9sdk pull origin master &&
-/opt/cloud9/c9sdk/scripts/install-sdk.sh &&
+( /opt/cloud9/c9sdk/scripts/install-sdk.sh || (
+ls -lht /root/.c9/node &&
+echo &&
+ls -lht /root/.c9/node/bin/ &&
+echo &&
+cat /root/.c9/node/bin/npm &&
+echo &&
+/root/.c9/node/bin/node -v &&
+false
+) ) &&
 curl -L https://raw.githubusercontent.com/c9/install/master/install.sh | bash &&
 apk add docker &&
 apk add util-linux-user &&
