@@ -11,7 +11,6 @@ dnf update --assumeyes &&
     cp /opt/cloud9/docker.repo /etc/yum.repos.d/ &&
     dnf install --assumeyes docker-engine &&
     dnf install --assumeyes util-linux-user &&
-    echo ${HOME}/bin/shell.sh >> /etc/shells &&
     dnf update --assumeyes &&
     dnf clean all &&
     true
