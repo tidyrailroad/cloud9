@@ -7,6 +7,7 @@
 	[ -f /init/${SCRIPT} ] && ( /bin/sh /init/${SCRIPT} || exit 64 ) &&
 	true
     done &&
+    true
 ) &&
 node /opt/cloud9/c9sdk/server.js ${@} &&
 true
