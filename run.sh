@@ -11,7 +11,7 @@ apk add bzip2 &&
 apk add ncurses &&
 apk add gmp-dev &&
 apk add mpfr-dev &&
-apk add libmpc &&
+apk add mpc &&
 apk add glibc-devel &&
 apk add flex &&
 apk add bison &&
