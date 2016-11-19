@@ -22,6 +22,7 @@ apk add g++ &&
 apk add nodejs &&
 apk add bash &&
 apk add curl &&
+apk add ca-certificates &&
 mkdir /opt/cloud9/c9sdk &&
 git -C /opt/cloud9/c9sdk init &&
 git -C /opt/cloud9/c9sdk remote add origin git://github.com/c9/core.git &&
