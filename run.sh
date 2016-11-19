@@ -10,7 +10,7 @@ apk add which &&
 apk add bzip2 &&
 apk add ncurses &&
 apk add gmp-devel &&
-apk add mpfr-devel &&
+apk add mpfr-dev &&
 apk add libmpc-devel &&
 apk add glibc-devel &&
 apk add flex &&
