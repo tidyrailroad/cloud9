@@ -4,7 +4,7 @@
     [ ! -d /init ] ||
     ls -1 /init | while read SCRIPT
     do
-	[ -f /init/${SCRIPT} ] && ( /bin/sh /init/${SCRIPT} || exit 64 ) &&
+	[ -f /init/${SCRIPT} ] && ( /usr/bin/sh /init/${SCRIPT} || exit 64 ) &&
 	true
     done &&
     true
