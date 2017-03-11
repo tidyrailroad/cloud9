@@ -15,5 +15,5 @@
 #   You should have received a copy of the GNU General Public License
 #   along with cloud9.  If not, see <http://www.gnu.org/licenses/>.
 
-node /opt/cloud9/c9sdk/server.js ${@} &&
+node /opt/docker/c9sdk/server.js ${@} &&
 true

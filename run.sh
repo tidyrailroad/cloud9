@@ -17,14 +17,14 @@
 
 dnf update --assumeyes &&
     dnf install --assumeyes git make python tar which bzip2 ncurses gmp-devel mpfr-devel libmpc-devel glibc-devel flex bison glibc-static zlib-devel gcc gcc-c++ nodejs &&
-    mkdir /opt/cloud9/c9sdk &&
-    git -C /opt/cloud9/c9sdk init &&
-    git -C /opt/cloud9/c9sdk remote add origin git://github.com/alienbalcony/core.git &&
-    git -C /opt/cloud9/c9sdk fetch origin 20170212:impl &&
-    git -C /opt/cloud9/c9sdk checkout impl &&
-    /opt/cloud9/c9sdk/scripts/install-sdk.sh &&
+    mkdir /opt/docker/c9sdk &&
+    git -C /opt/docker/c9sdk init &&
+    git -C /opt/docker/c9sdk remote add origin git://github.com/alienbalcony/core.git &&
+    git -C /opt/docker/c9sdk fetch origin 20170212:impl &&
+    git -C /opt/docker/c9sdk checkout impl &&
+    /opt/docker/c9sdk/scripts/install-sdk.sh &&
     curl -L https://raw.githubusercontent.com/alienbalcony/install/20170212/install.sh | bash &&
-    cp /opt/cloud9/docker.repo /etc/yum.repos.d/ &&
+    cp /opt/docker/docker.repo /etc/yum.repos.d/ &&
     dnf install --assumeyes docker-engine &&
     dnf install --assumeyes util-linux-user &&
     dnf update --assumeyes &&
