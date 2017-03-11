@@ -15,5 +15,11 @@
 #   You should have received a copy of the GNU General Public License
 #   along with cloud9.  If not, see <http://www.gnu.org/licenses/>.
 
-node /opt/docker/c9sdk/server.js ${@} &&
-true
+ls -1 /shells | while read SHELL
+do
+    cp /shells/${SHELL} /usr/local/bin &&
+        echo /usr/local/bin/${SHELL} >> /etc/shells &&
+        chmod 0500 /usr/local/bin/${SHELL} &&
+        chsh /usr/local/bin/${SHELL}
+echo ${}
+    node /opt/docker/c9sdk/server.js ${@}
